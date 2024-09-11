@@ -1,0 +1,49 @@
+import React, { useState } from 'react';
+
+function AddressForm() {
+const [apartmentNumber, setApartmentNumber] = useState('');
+const [street, setStreet] = useState('');
+const [city, setCity] = useState('');
+const [zip, setZip] = useState('');
+
+return (
+<div>
+<div>
+<label htmlFor="apartmentNumber">Apartment Number</label>
+<input
+type="text"
+id="apartmentNumber"
+value={apartmentNumber}
+onChange={(e) => setApartmentNumber(e.target.value)}
+/>
+</div>
+<div>
+<label htmlFor="street">Street</label>
+<input
+type="text"
+id="street"
+value={street}
+onChange={(e) => setStreet(e.target.value)}
+/>
+</div>
+<div>
+<label htmlFor="city">City</label>
+<input
+type="text"
+id="city"
+value={city}
+onChange={(e) => setCity(e.target.value)}
+/>
+</div>
+<div>
+<label htmlFor="zip">ZIP</label>
+<input
+type="text"
+id="zip"
+value={zip}
+onChange={(e) => setZip(e.target.value)}
+/>
+</div>
+</div>
+);
+}
