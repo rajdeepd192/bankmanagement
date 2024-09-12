@@ -1,0 +1,177 @@
+## React Code (AddressInput.tsx)
+
+```typescript
+
+import React, { useState } from 'react';
+
+interface AddressInputProps {
+
+onAddressChange: (address: Address) => void;
+
+}
+
+interface Address {
+
+apartmentNumber?: string;
+
+street: string;
+
+city: string;
+
+zip: string;
+
+}
+
+const AddressInput: React.FC<AddressInputProps> = ({ onAddressChange }) => {
+
+const [address, setAddress] = useState<Address>({
+
+street: '',
+
+city: '',
+
+zip: '',
+
+});
+
+const handleChange = (
+
+event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+
+) => {
+
+const { name, value } = event.target;
+
+setAddress({ ...address, [name]: value });
+
+onAddressChange({ ...address, [name]: value });
+
+};
+
+return (
+
+<div>
+
+<div className="address-input-row">
+
+<label htmlFor="apartmentNumber">Apartment Number</label>
+
+<input
+
+type="text"
+
+id="apartmentNumber"
+
+name="apartmentNumber"
+
+value={address.apartmentNumber || ''}
+
+onChange={handleChange}
+
+/>
+
+</div>
+
+<div className="address-input-row">
+
+<label htmlFor="street">Street</label>
+
+<input
+
+type="text"
+
+id="street"
+
+name="street"
+
+value={address.street}
+
+onChange={handleChange}
+
+required
+
+/>
+
+</div>
+
+<div className="address-input-row">
+
+<label htmlFor="city">City</label>
+
+<input
+
+type="text"
+
+id="city"
+
+name="city"
+
+value={address.city}
+
+onChange={handleChange}
+
+required
+
+/>
+
+</div>
+
+<div className="address-input-row">
+
+<label htmlFor="zip">ZIP</label>
+
+<input
+
+type="text"
+
+id="zip"
+
+name="zip"
+
+value={address.zip}
+
+onChange={handleChange}
+
+required
+
+/>
+
+</div>
+
+</div>
+
+);
+
+};
+
+export default AddressInput;
+
+```
+
+## JSON Configuration Example
+
+```json
+
+{
+
+"type": "AddressInput",
+
+"properties": {
+
+"onAddressChange": {
+
+"action": "SaveAddress", // Example action to handle address updates
+
+"parameters": {
+
+"address": "{address}" // Pass the updated address object
+
+}
+
+}
+
+}
+
+}
+
+```
